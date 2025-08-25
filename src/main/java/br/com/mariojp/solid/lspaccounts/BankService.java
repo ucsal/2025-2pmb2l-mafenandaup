@@ -1,15 +1,16 @@
 package br.com.mariojp.solid.lspaccounts;
 
 public class BankService {
-    public void processWithdrawal(Withdrawable wt, double amount){
+	  // aceita withdrawable ao invés de account, só quem pode sacar é aceito
+    private void processWithdrawal(Withdrawable wt, double amount){
         wt.withdraw(amount);
     }
     
-    // Mantém compatibilidade com a Main e testes
+    // esse método é compatível com os testes da main, porém só executa com as instâncias de conta capazes de sacar (ou seja, da interface withdrawable)
     public void processWithdrawal(Account account, double amount) {
         if (account instanceof Withdrawable) {
-            processWithdrawal((Withdrawable) account, amount);
+            processWithdrawal((Withdrawable) account, amount); // caso verdadeiro, o primeiro método é executadado.
         }
-        // Caso contrário, não faz nada (SavingsAccount)
+        //se não, não faz nada
     }
 }
