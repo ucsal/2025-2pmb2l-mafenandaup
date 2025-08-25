@@ -1,9 +1,14 @@
 package br.com.mariojp.solid.lspaccounts;
 
 public class Account {
-    protected double balance;
+	
+	   protected double balance;
 
-    public void deposit(double amount){
+	 public Account(double balance) {
+	      this.balance = balance; //construtor
+	 }
+
+	public void deposit(double amount){
         this.balance += amount;
     }
 
